@@ -4,38 +4,111 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // Application name
-      title: 'Flutter Hello World',
-      // Application theme data, you can set the colors for the application as
-      // you want
+      debugShowCheckedModeBanner: false,
+      title: 'Inicio de Sesión',
       theme: ThemeData(
-        // useMaterial3: false,
         primarySwatch: Colors.blue,
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey.shade400),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey.shade400),
+          ),
+        ),
       ),
-      // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: LoginPage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  final String title;
-  const MyHomePage({super.key, required this.title});  
-
+class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        // The title text which will be shown on the action bar
-        title: Text(title),
+        backgroundColor: Colors.yellow[600],
+        elevation: 0,
+        toolbarHeight: 20,
       ),
-      body: Center(
-        child: Text(
-          'Hello, World!',
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Flecha decorativa (no funcional)
+            Icon(Icons.arrow_back, color: Colors.black),
+            const SizedBox(height: 20), // Espacio después de la flecha
+
+            const Text(
+              'Ingresa tu e-mail para iniciar sesión',
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
+            ),
+            const SizedBox(height: 30),
+            const Text(
+              'Email',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black87,
+              ),
+            ),
+            const SizedBox(height: 5),
+            TextField(
+              decoration: InputDecoration(
+                hintStyle: TextStyle(color: Colors.grey.shade600),
+              ),
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Contraseña',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black87,
+              ),
+            ),
+            const SizedBox(height: 5),
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                hintStyle: TextStyle(color: Colors.grey.shade600),
+              ),
+            ),
+            const SizedBox(height: 30),
+            const Divider(
+              thickness: 1,
+              color: Color(0xff000000),
+            ),
+            const SizedBox(height: 20),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue.shade600,
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                ),
+                child: const Text(
+                  'Ingresar',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
